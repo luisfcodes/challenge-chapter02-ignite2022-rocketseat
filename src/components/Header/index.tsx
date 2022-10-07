@@ -10,12 +10,12 @@ export function Header(){
         <img src="logo.svg" alt="Copo de café roxo com texto ao lado" />
         </NavLink>
         <div className="actions">
-          <a href="#">
+          <NavLink to="/success">
             <button className="button_location">
               <MapPin width={22} height={22} weight={'fill'} className={'mapPin_icon'}/>
               <span>Porto Alegre, RS</span>
             </button>
-          </a>
+          </NavLink>
           <NavLink to="/checkout">
             <button className="button_cart">
               <ShoppingCart width={22} height={22} weight={'fill'} className={'shoppingCart_icon'}/>

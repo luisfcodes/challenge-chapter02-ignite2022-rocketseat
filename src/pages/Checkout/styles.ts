@@ -131,8 +131,162 @@ export const Container = styled.main`
     width: 100%;
     max-width: 448px;
 
-    .checkout_selected_items_content {
-   
+    .checkout_selected_items_content{
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      border-radius: 6px 44px;
+
+      .checkout_selected_coffee {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        padding: 8px 4px;
+
+        img {
+          width: 64px;
+          height: 64px;
+        }
+
+        .checkout_selected_coffee_options {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          .checkout_selected_coffee_title {
+            color: ${color => color.theme.colors.base['base-subtitle']};
+            font-size: 1rem;
+            line-height: 1.3;
+          }
+
+          .checkout_selected_coffee_buttons_amount {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            div {
+              height: 32px;
+              display: flex;
+              align-items: center;
+              gap: 4px;
+              padding: 8px;
+              border-radius: 6px;
+              background-color: ${color => color.theme.colors.base['base-button']};
+
+              span {
+                color: ${color => color.theme.colors.base['base-title']};
+                font-size: 1rem;
+                line-height: 1.3;
+                width: 20px;
+                text-align: center;
+              }
+            }
+
+            button {
+              background-color: transparent;
+              border: 0;
+
+              &>:first-child {
+                color: ${color => color.theme.colors.product['purple']};
+                transition: all .2s;
+
+                &:hover {
+                    color: ${color => color.theme.colors.product['purple-dark']};
+                  }
+              }
+            }
+
+            .checkout_selected_coffee_button_delete {
+              background-color: ${color => color.theme.colors.base['base-button']};
+              border-radius: 6px;
+              padding: 0 8px;
+              display: flex;
+              align-items: center;
+              gap: 4px;
+              height: 32px;
+              transition: all .2s;
+
+              span {
+                color: ${color => color.theme.colors.base['base-text']};
+                font-size: .75rem;
+                line-height: 1.6;
+                text-transform: uppercase;
+                margin-top: 1px;
+              }
+
+              &:hover {
+                background-color: ${color => color.theme.colors.base['base-hover']};
+
+                span {
+                  color: ${color => color.theme.colors.base['base-subtitle']};
+                }
+              }
+            }
+          }
+        }
+        .checkout_selected_coffe_price {
+          position: absolute;
+          right: 0;
+          top: 0;
+          margin-top: 2px;
+          color: ${color => color.theme.colors.base['base-text']};
+          font-weight: 700;
+          font-size: 1rem;
+          line-height: 1.3;
+        }  
+      }
+
+      .checkout_selected_items_divider {
+        width: 100%;
+        border: 1px solid ${color => color.theme.colors.base['base-button']};
+      }
+
+      .checkout_selected_items_total {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
+
+        div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: ${color => color.theme.colors.base['base-text']};
+          line-height: 1.3;
+          font-size: 1rem;
+
+          &>:first-child {
+            font-size: .875rem;
+          }
+        }
+        .checkout_selected_items_total_summary span {
+          font-weight: 700;
+          font-size: 1.25rem;
+          color: ${color => color.theme.colors.base['base-subtitle']};
+        }
+      }
+
+      .checkout_selected_items_button_confirm_order {
+        background-color: ${color => color.theme.colors.product['yellow']};
+        padding: 12px 8px;
+        border-radius: 6px;
+        border: 0;
+        transition: all .2s;
+
+        span {
+          font-weight: 700;
+          font-size: .875rem;
+          line-height: 1.6;
+          text-transform: uppercase;
+          color: ${color => color.theme.colors.base['white']};
+          font-stretch: 100;
+        }
+
+        &:hover {
+          background-color: ${color => color.theme.colors.product['yellow-dark']};
+        }
+      }
     }
   }
 `

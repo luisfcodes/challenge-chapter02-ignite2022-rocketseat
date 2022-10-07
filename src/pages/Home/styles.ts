@@ -194,6 +194,7 @@ export const Container = styled.main`
                 font-size: 1rem;
                 line-height: 1.3;
                 text-align: center;
+                width: 20px;
               }
 
               button {
@@ -204,6 +205,11 @@ export const Container = styled.main`
 
                 &>:first-child{
                   color: ${color => color.theme.colors.product['purple']};
+                  transition: all .2s;
+
+                  &:hover {
+                    color: ${color => color.theme.colors.product['purple-dark']};
+                  }
                 }
               }
             }
@@ -217,6 +223,11 @@ export const Container = styled.main`
               width: 38px;
               height: 38px;
               cursor: pointer;
+              transition: all .2s;
+
+              &:hover {
+                background-color: ${color => color.theme.colors.product['purple']};
+              }
 
               &>:first-child{
                   color: ${color => color.theme.colors.base['base-card']};

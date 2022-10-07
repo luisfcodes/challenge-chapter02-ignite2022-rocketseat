@@ -1,7 +1,12 @@
 import { Container } from "./styles";
 import { ShoppingCart, Package, Timer, Coffee, Minus, Plus } from 'phosphor-react'
+import { useEffect } from "react";
 
 export function Home() {
+  useEffect(() => {
+    document.title = 'Coffee Delivery | Home'
+  },[])
+
   return (
     <Container>
       <section className="intro_main_container">
