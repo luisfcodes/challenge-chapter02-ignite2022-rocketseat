@@ -1,11 +1,9 @@
-import { Header } from "../../components/Header";
 import { Container } from "./styles";
 import { ShoppingCart, Package, Timer, Coffee, Minus, Plus } from 'phosphor-react'
 
 export function Home() {
   return (
     <Container>
-      <Header />
       <section className="intro_main_container">
         <div className="intro_main_content">
           <div>

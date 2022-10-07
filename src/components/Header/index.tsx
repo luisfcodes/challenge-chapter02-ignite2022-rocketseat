@@ -6,7 +6,9 @@ export function Header(){
   return (
     <HeaderContainer>
       <nav>
+        <NavLink to="/">
         <img src="logo.svg" alt="Copo de café roxo com texto ao lado" />
+        </NavLink>
         <div className="actions">
           <a href="#">
             <button className="button_location">
