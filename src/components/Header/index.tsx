@@ -1,8 +1,13 @@
 import { HeaderContainer } from "./styles";
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { CardListContext } from "../../App";
 
 export function Header(){
+
+  const { listCoffeesFiltered } = useContext(CardListContext)
+
   return (
     <HeaderContainer>
       <nav>
@@ -19,6 +24,11 @@ export function Header(){
           <NavLink to="/checkout">
             <button className="button_cart">
               <ShoppingCart width={22} height={22} weight={'fill'} className={'shoppingCart_icon'}/>
+              {listCoffeesFiltered.length > 0 && (
+                <div className="button_cart_itens">
+                  <span>{listCoffeesFiltered.length}</span>
+                </div>
+              )}
             </button>
           </NavLink>
         </div>

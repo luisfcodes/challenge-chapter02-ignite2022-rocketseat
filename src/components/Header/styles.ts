@@ -42,9 +42,29 @@ export const HeaderContainer = styled.header`
 
     .button_cart {
       background-color: ${color => color.theme.colors.product['yellow-light']};
+      position: relative;
 
       .shoppingCart_icon {
         color: ${color => color.theme.colors.product['yellow-dark']};
+      }
+
+      .button_cart_itens {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: -8px;
+        right: -8.35px;
+        background-color: ${color => color.theme.colors.product['yellow-dark']};
+        color: ${color => color.theme.colors.base['white']};
+        border-radius: 1000px;
+        height: 20px;
+        width: 20px;
+
+        span {
+          font-weight: 700;
+          font-size: .75rem;
+        }
       }
     }
   }

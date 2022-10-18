@@ -1,11 +1,28 @@
 import { Container } from "./styles";
 import { MapPinLine, CurrencyDollar, CreditCard, Bank, Money, Minus, Plus, Trash } from 'phosphor-react'
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { CardCheckout } from "../../components/CardCheckout";
+import { CardListContext } from "../../App";
+import { NavLink, useNavigate } from "react-router-dom";
+
 
 export function Checkout() {
   useEffect(() => {
     document.title = 'Coffee Delivery | Checkout'
   }, [])
+
+  const { listCoffeesFiltered } = useContext(CardListContext)
+
+  const totalItensPrice = listCoffeesFiltered.reduce((acc, item) => {
+    return acc = acc + item.totalPrice
+  }, 0)
+
+  const isDisabled = listCoffeesFiltered.length <= 0
+  let navigate = useNavigate()
+
+  function handleSubmit() {
+    navigate('/success')
+  }
 
   return (
     <Container>
@@ -65,48 +82,23 @@ export function Checkout() {
       <div className="checkout_info_selected_items">
         <h2 className="checkout_title">Cafés selecionados</h2>
         <section className="checkout_layout checkout_selected_items_content">
-          <div className="checkout_selected_coffee">
-            <img src="coffes/Expresso.png" alt="Xícara de café expresso com píres em baixo" />
-            <div className="checkout_selected_coffee_options">
-              <span className="checkout_selected_coffee_title">Expresso Tradicional</span>
-              <div className="checkout_selected_coffee_buttons_amount">
-                <div>
-                  <button><Minus width={14} height={14} /></button>
-                  <span>1</span>
-                  <button><Plus width={14} height={14} /></button>
-                </div>
-                <button className="checkout_selected_coffee_button_delete">
-                  <Trash width={16} height={16} />
-                  <span>Remover</span>
-                </button>
-              </div>
-            </div>
-            <span className="checkout_selected_coffe_price">R$ 9,90</span>
-          </div>
+          {listCoffeesFiltered.length > 0 && listCoffeesFiltered.map(item => (
+            <CardCheckout
+              key={item.title}
+              title={item.title}
+              amountSelected={item.amountSelected}
+              imgSrc={item.imgSrc}
+              imgAlt={item.imgSrc}
+              totalPrice={item.totalPrice}
+            />
+          ))}
+
           <span className="checkout_selected_items_divider"></span>
-          <div className="checkout_selected_coffee">
-            <img src="coffes/Latte.png" alt="Xícara de café expresso com píres em baixo" />
-            <div className="checkout_selected_coffee_options">
-              <span className="checkout_selected_coffee_title">Latte</span>
-              <div className="checkout_selected_coffee_buttons_amount">
-                <div>
-                  <button><Minus width={14} height={14} /></button>
-                  <span>1</span>
-                  <button><Plus width={14} height={14} /></button>
-                </div>
-                <button className="checkout_selected_coffee_button_delete">
-                  <Trash width={16} height={16} />
-                  <span>Remover</span>
-                </button>
-              </div>
-            </div>
-            <span className="checkout_selected_coffe_price">R$ 19,80</span>
-          </div>
-          <span className="checkout_selected_items_divider"></span>
+
           <div className="checkout_selected_items_total">
             <div>
               <span>Total de itens</span>
-              <span>R$ 29,70</span>
+              <span>R$ {totalItensPrice.toFixed(2)}</span>
             </div>
             <div>
               <span>Entrega</span>
@@ -114,10 +106,10 @@ export function Checkout() {
             </div>
             <div className="checkout_selected_items_total_summary">
               <span>Total</span>
-              <span>R$ 33,20</span>
+              <span>R$ {(totalItensPrice + 3.5).toFixed(2)}</span>
             </div>
           </div>
-          <button className="checkout_selected_items_button_confirm_order">
+          <button className="checkout_selected_items_button_confirm_order" disabled={isDisabled} onClick={handleSubmit}>
             <span>Confirmar Pedido</span>
           </button>
         </section>

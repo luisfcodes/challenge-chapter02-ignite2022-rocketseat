@@ -30,20 +30,14 @@ export const Container = styled.div`
       justify-content: space-between;
 
       .success_info_description {
+        width: 526px;
         padding: 2.5rem;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         gap: 2rem;
         border-radius: 6px 36px;
-        border-top: 4px solid #FFFF00;
-        border-bottom:4px solid #FF0000;
-        background-image: 
-          linear-gradient(#FFFF00, #FF0000),
-          linear-gradient(#FFFF00, #FF0000)
-        ;
-        background-size:4px 100%;
-        background-position:0 0, 100% 0;
-        background-repeat:no-repeat;      
+        border: 2px solid ${color => color.theme.colors.product['purple']};
 
         .success_info_address {
           display: flex;
